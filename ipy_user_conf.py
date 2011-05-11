@@ -141,25 +141,5 @@ _ip.system=system_return_code
     # at your own risk!
     import ipy_greedycompleter
 
-def terminal_size_posix():
-    """ Return terminal (height, width) on Posix systems. """
-    # This function is based on _terminal_size_unix() which can be found at
-    # <https://bitbucket.org/robertkern/kernmagic/src/tip/kernmagic/utils.py>
-    try:
-        import struct
-        import fcntl
-        import termios
-
-        return struct.unpack('hh',
-            fcntl.ioctl(
-                sys.stdout.fileno(),
-                termios.TIOCGWINSZ,
-                'hhww'  # length of return value (must be 4)
-            )
-        )
-
-    except (ImportError, AttributeError, IOError):
-        return (25, 80)
-
 
 main()
