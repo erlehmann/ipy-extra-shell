@@ -128,7 +128,14 @@ def system_return_code(cmd):
     if (status != 0):
         return status
 
-_ip.system=system_return_code
+def magic_cd_fallback_system(cmd):
+    if os.path.isdir(os.path.expanduser(cmd)):
+        _ip.magic('%cd ' + cmd)
+        return
+
+    system_return_code(cmd)
+
+_ip.system=magic_cd_fallback_system
 """
 
     o.autoexec.append(STATUS_FUNCTION)
