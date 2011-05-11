@@ -105,6 +105,14 @@ os.popen(" \
     ").read().rstrip()
 """
 
+    GIT_STAGED = \
+"""
+os.popen(' \
+    diff=`git diff --cached 2>/dev/null`; \
+    test -n "$diff" && echo "+"; \
+    ').read().rstrip()
+"""
+
     GIT_UNTRACKED = \
 """
 os.popen(' \
@@ -113,7 +121,7 @@ os.popen(' \
     ').read().rstrip()
 """
 
-    o.prompt_in1 = r"\C_Green\h \C_Cyan\Y5\C_Normal ${%s} \C_Cyan${%s}\C_Brown${%s}${%s}${%s}\n\C_Green\N \C_Normal\Y1\C_Normal${%s}\C_Cyan${%s}\C_LightRed${%s}${%s} \C_Brown★ " % \
+    o.prompt_in1 = r"\C_Green\h \C_Cyan\Y5\C_Normal ${%s} \C_Cyan${%s}\C_Brown${%s}${%s}${%s}\n\C_Green\N \C_Normal\Y1\C_Normal${%s}\C_Cyan${%s}\C_LightGreen${%s}\C_LightRed${%s}${%s} \C_Brown★ " % \
 (
 GIT_ON,
 GIT_BRANCH,
@@ -122,6 +130,7 @@ GIT_REVSTRING,
 GIT_BRACKET_CLOSE,
 GIT_COLON,
 GIT_BRANCH,
+GIT_STAGED,
 GIT_MODIFIED,
 GIT_UNTRACKED
 )
