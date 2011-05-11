@@ -83,6 +83,14 @@ os.popen(" \
     ").read().rstrip()
 """
 
+    GIT_MODIFIED = \
+"""
+os.popen(' \
+    diff=`git diff 2>/dev/null`; \
+    test -n "$diff" && echo "!"; \
+    ').read().rstrip()
+"""
+
     GIT_ON = \
 """
 os.popen(" \
@@ -97,6 +105,14 @@ os.popen(" \
     ").read().rstrip()
 """
 
+    GIT_UNTRACKED = \
+"""
+os.popen(' \
+    filelist=`git ls-files --others --exclude-standard 2>/dev/null`; \
+    test -n "$filelist" && echo "?"; \
+    ').read().rstrip()
+"""
+
     PROMPT_CHARACTER = \
 """
 os.popen(" \
@@ -105,7 +121,7 @@ os.popen(" \
     ").read().rstrip()
 """
 
-    o.prompt_in1 = r"\C_Brown\u\C_Normal at \C_Purple\h\C_Normal in \C_Cyan\Y5\C_Normal ${%s} \C_Cyan${%s}\C_Brown${%s}${%s}${%s}\n\C_Green\N \C_Normal\Y1\C_Normal${%s}\C_Cyan${%s} \C_Brown${%s} " % \
+    o.prompt_in1 = r"\C_Brown\u\C_Normal at \C_Purple\h\C_Normal in \C_Cyan\Y5\C_Normal ${%s} \C_Cyan${%s}\C_Brown${%s}${%s}${%s}\n\C_Green\N \C_Normal\Y1\C_Normal${%s}\C_Cyan${%s}\C_LightRed${%s}${%s} \C_Brown${%s} " % \
 (
 GIT_ON,
 GIT_BRANCH,
@@ -114,6 +130,8 @@ GIT_REVSTRING,
 GIT_BRACKET_CLOSE,
 GIT_COLON,
 GIT_BRANCH,
+GIT_MODIFIED,
+GIT_UNTRACKED,
 PROMPT_CHARACTER
 )
     o.prompt_in2 = r'\C_Brown⋮ '
