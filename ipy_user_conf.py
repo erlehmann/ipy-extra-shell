@@ -113,7 +113,7 @@ os.popen(' \
     ').read().rstrip()
 """
 
-    o.prompt_in1 = r"\C_Brown\u\C_Normal at \C_Purple\h\C_Normal in \C_Cyan\Y5\C_Normal ${%s} \C_Cyan${%s}\C_Brown${%s}${%s}${%s}\n\C_Green\N \C_Normal\Y1\C_Normal${%s}\C_Cyan${%s}\C_LightRed${%s}${%s} \C_Brown★ " % \
+    o.prompt_in1 = r"\C_Green\h \C_Cyan\Y5\C_Normal ${%s} \C_Cyan${%s}\C_Brown${%s}${%s}${%s}\n\C_Green\N \C_Normal\Y1\C_Normal${%s}\C_Cyan${%s}\C_LightRed${%s}${%s} \C_Brown★ " % \
 (
 GIT_ON,
 GIT_BRANCH,
