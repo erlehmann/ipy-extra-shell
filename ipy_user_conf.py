@@ -134,18 +134,11 @@ GIT_UNTRACKED
     # for sane integer division that converts to float (1/2 == 0.5)
     o.autoexec.append('from __future__ import division')
 
-    # get return values of commands
-    o.autoexec.append('import errno')
-    o.autoexec.append('import inspect')
-
     STATUS_FUNCTION = \
 """
 def system_return_code(cmd):
     status = os.system(cmd) >> 8  # high-order byte is the exit status
     if (status != 0):
-        for e in inspect.getmembers(errno):
-            if (e[1] == status):
-                return e[0]
         return status
 
 _ip.system=system_return_code
