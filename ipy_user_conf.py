@@ -17,39 +17,16 @@
 import IPython.ipapi
 ip = IPython.ipapi.get()
 
-import ipy_defaults    
+import ipy_defaults
 
 
-def main():   
-
-    # uncomment if you want to get ipython -p sh behaviour
-    # without having to use command line switches  
+def main():
     import ipy_profile_sh
 
-    # Configure your favourite editor?
-    # Good idea e.g. for %edit os.path.isfile
-
-    #import ipy_editors
-    
-    # Choose one of these:
-    
-    #ipy_editors.scite()
-    #ipy_editors.scite('c:/opt/scite/scite.exe')
-    #ipy_editors.komodo()
-    #ipy_editors.idle()
-    # ... or many others, try 'ipy_editors??' after import to see them
-    
-    # Or roll your own:
-    #ipy_editors.install_editor("c:/opt/jed +$line $file")
-    
-    
     o = ip.options
-    # An example on how to set options
-    #o.autocall = 1
+
+    o.autocall = 1
     o.system_verbose = 0
-    
-    #import_all("os sys")
-    #execf('~/_ipython/ns.py')
 
     import os
     from datetime import date
@@ -157,10 +134,10 @@ _ip.system=system_return_code
     o.autoexec.append(STATUS_FUNCTION)
 
     # For %tasks and %kill
-    import jobctrl 
-    
-    # Tab completer that is not quite so picky (i.e. 
-    # "foo".<TAB> and str(2).<TAB> will work). Complete 
+    import jobctrl
+
+    # Tab completer that is not quite so picky (i.e.
+    # "foo".<TAB> and str(2).<TAB> will work). Complete
     # at your own risk!
     import ipy_greedycompleter
 
@@ -184,14 +161,5 @@ def terminal_size_posix():
     except (ImportError, AttributeError, IOError):
         return (25, 80)
 
-# some config helper functions you can use 
-def import_all(modules):
-    """ Usage: import_all("os sys") """ 
-    for m in modules.split():
-        ip.ex("from %s import *" % m)
-
-def execf(fname):
-    """ Execute a file in user namespace """
-    ip.ex('execfile("%s")' % os.path.expanduser(fname))
 
 main()
