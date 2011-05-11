@@ -134,6 +134,7 @@ GIT_UNTRACKED
     # for sane integer division that converts to float (1/2 == 0.5)
     o.autoexec.append('from __future__ import division')
 
+    # get return values of commands
     STATUS_FUNCTION = \
 """
 def system_return_code(cmd):
