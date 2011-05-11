@@ -113,15 +113,7 @@ os.popen(' \
     ').read().rstrip()
 """
 
-    PROMPT_CHARACTER = \
-"""
-os.popen(" \
-    git branch >/dev/null 2>/dev/null && echo '±' && return; \
-    echo ★ \
-    ").read().rstrip()
-"""
-
-    o.prompt_in1 = r"\C_Brown\u\C_Normal at \C_Purple\h\C_Normal in \C_Cyan\Y5\C_Normal ${%s} \C_Cyan${%s}\C_Brown${%s}${%s}${%s}\n\C_Green\N \C_Normal\Y1\C_Normal${%s}\C_Cyan${%s}\C_LightRed${%s}${%s} \C_Brown${%s} " % \
+    o.prompt_in1 = r"\C_Brown\u\C_Normal at \C_Purple\h\C_Normal in \C_Cyan\Y5\C_Normal ${%s} \C_Cyan${%s}\C_Brown${%s}${%s}${%s}\n\C_Green\N \C_Normal\Y1\C_Normal${%s}\C_Cyan${%s}\C_LightRed${%s}${%s} \C_Brown★ " % \
 (
 GIT_ON,
 GIT_BRANCH,
@@ -131,8 +123,7 @@ GIT_BRACKET_CLOSE,
 GIT_COLON,
 GIT_BRANCH,
 GIT_MODIFIED,
-GIT_UNTRACKED,
-PROMPT_CHARACTER
+GIT_UNTRACKED
 )
     o.prompt_in2 = r'\C_Brown⋮ '
     o.prompt_out = r'\# ➜ '
