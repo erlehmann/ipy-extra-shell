@@ -133,7 +133,7 @@ def magic_cd_fallback_system(cmd):
         _ip.magic('%cd ' + cmd)
         return
 
-    system_return_code(cmd)
+    return system_return_code(cmd)
 
 _ip.system=magic_cd_fallback_system
 """
