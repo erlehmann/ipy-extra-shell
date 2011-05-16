@@ -49,7 +49,7 @@ os.popen(" \
     GIT_BRANCH = \
 """
 os.popen(" \
-    git name-rev --name-only --always HEAD 2>/dev/null; \
+    git branch 2>/dev/null | sed -e '/^\s/d' -e 's/^\*\s//'; \
     ").read().rstrip()
 """
 
