@@ -46,6 +46,8 @@ os.popen(" \
     ").read().rstrip()
 """
 
+    # FIXME: git-branch's output should not be used in scripts
+    # FIXME: parse "git symbolic-ref HEAD 2>/dev/null" instead
     GIT_BRANCH = \
 """
 os.popen(" \
