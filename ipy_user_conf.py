@@ -144,8 +144,7 @@ _ip.system=magic_cd_fallback_system
 
     # Crtl + L clears the screen
     o.autoexec.append('import readline')
-    o.autoexec.append("""readline.parse_and_bind('"\C-u":unix-line-discard')""")
-    o.autoexec.append("""readline.parse_and_bind('"\C-l":"\C-u!clear\C-M"')""")
+    o.autoexec.append("""readline.parse_and_bind('"\C-l":clear-screen')""")
 
     # For %tasks and %kill
     import jobctrl
