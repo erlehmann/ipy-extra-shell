@@ -19,6 +19,8 @@ ip = IPython.ipapi.get()
 
 import ipy_defaults
 
+import signal
+signal.signal(signal.SIGPIPE, signal.SIG_DFL)
 
 def main():
     import ipy_profile_sh
