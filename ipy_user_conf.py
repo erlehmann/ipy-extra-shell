@@ -133,8 +133,11 @@ def system_return_code(cmd):
         return status
 
 def magic_cd_fallback_system(cmd):
-    if os.path.isdir(os.path.expanduser(cmd)):
+    path = os.path.expanduser(cmd)
+
+    if os.path.isdir(path):
         _ip.magic('%cd ' + cmd)
+        set_term_title(os.path.basename(path))
         return
 
     return system_return_code(cmd)
@@ -143,6 +146,9 @@ _ip.system=magic_cd_fallback_system
 """
 
     o.autoexec.append(STATUS_FUNCTION)
+
+    o.autoexec.append('from IPython.platutils_posix import set_term_title')
+    o.autoexec.append("set_term_title('~')")
 
     # Crtl + L clears the screen
     o.autoexec.append('import readline')
