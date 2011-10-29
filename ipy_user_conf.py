@@ -151,8 +151,8 @@ _ip.system=magic_cd_fallback_system
     o.autoexec.append("set_term_title('~')")
 
     # Crtl + L clears the screen
-    o.autoexec.append('import readline')
-    o.autoexec.append("""readline.parse_and_bind('"\C-l":clear-screen')""")
+    import readline
+    readline.parse_and_bind('"\C-l":clear-screen')
 
     # For %tasks and %kill
     import jobctrl
